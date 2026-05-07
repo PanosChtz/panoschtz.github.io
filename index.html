@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panagiotis Chatzigiannis</title>
+  <meta name="description" content="Panagiotis Chatzigiannis — Research Scientist at Visa Research. Publications and background in cryptography, blockchains, privacy, and financial security.">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --card: #151d3a;
+      --text: #eef2ff;
+      --muted: #b7c0e0;
+      --accent: #7dd3fc;
+      --accent-2: #a78bfa;
+      --border: rgba(255,255,255,0.10);
+      --max: 980px;
+      --shadow: 0 12px 30px rgba(0,0,0,0.28);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --bg-soft: #eef2ff;
+        --card: #ffffff;
+        --text: #0f172a;
+        --muted: #475569;
+        --accent: #0369a1;
+        --accent-2: #6d28d9;
+        --border: rgba(15,23,42,0.10);
+        --shadow: 0 10px 24px rgba(15,23,42,0.08);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(125,211,252,0.12), transparent 24%),
+        radial-gradient(circle at top left, rgba(167,139,250,0.10), transparent 22%),
+        var(--bg);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 4.5rem 0 2.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin: 0 0 1rem;
+    }
+
+    .lead {
+      font-size: 1.04rem;
+      max-width: 62ch;
+      color: var(--text);
+    }
+
+    .hero-card,
+    .section-card {
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 1rem;
+    }
+
+    .hero-card img {
+      width: 100%;
+      border-radius: 16px;
+      display: block;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      background: var(--bg-soft);
+    }
+
+    .button-row,
+    .socials {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      border: none;
+    }
+
+    main section {
+      padding: 1rem 0 1.5rem;
+    }
+
+    .section-card {
+      padding: 1.5rem;
+    }
+
+    h2 {
+      margin: 0 0 1rem;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0 0 1rem;
+    }
+
+    .muted { color: var(--muted); }
+
+    .pub-list {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .pub-list li {
+      margin-bottom: 0.9rem;
+    }
+
+    .links-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .links-list li {
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--bg-soft) 55%, transparent);
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 780px) {
+      .hero-grid,
+      .links-list {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top">Panagiotis Chatzigiannis</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#links">Links</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Research Scientist</div>
+          <h1>Panagiotis Chatzigiannis</h1>
+          <p class="subtitle">Visa Research</p>
+          <p class="lead">
+            I work on cryptography, blockchains, privacy-enhancing technologies,
+            and security for modern financial and distributed systems.
+          </p>
+
+          <div class="button-row">
+            <a class="btn primary" href="cv.pdf">Download CV</a>
+            <a class="btn" href="#publications">View Publications</a>
+          </div>
+
+          <div class="socials">
+            <a href="https://github.com/PanosChtz/" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/panos-chatzigiannis/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://twitter.com/panoschtz" target="_blank" rel="noopener noreferrer">Twitter/X</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="face-small.png" alt="Portrait of Panagiotis Chatzigiannis">
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-card">
+          <h2>About</h2>
+          <p>
+            Hello, I’m Panagiotis (Panos). I joined Visa Research as a Research Scientist in June 2022.
+            I completed my PhD at George Mason University in June 2022 under the supervision of Dr. Foteini Baldimtsi.
+          </p>
+          <p>
+            My research lies in the field of cryptography and blockchains. I initially focused on blockchain auditability,
+            accountable payment systems, blockchain support for resource-constrained devices, and improving the usability
+            of blockchain applications.
+          </p>
+          <p>
+            My more recent work focuses on account and fund recovery mechanisms in blockchains, privacy-preserving financial systems,
+            and secure architectures for decentralized applications. I also worked as a summer intern and part-time researcher with Facebook/Novi.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <div class="section-card">
+          <h2>Publications</h2>
+          <ol class="pub-list">
+            <li>
+              Diversification across mining pools: Optimal mining strategies under PoW
+              <a href="https://arxiv.org/pdf/1905.04624.pdf" target="_blank" rel="noopener noreferrer">paper</a>
+              (<a href="https://weis2019.econinfosec.org/" target="_blank" rel="noopener noreferrer">WEIS 2019</a>)
+            </li>
+            <li>
+              Black-Box IoT: Authentication and Distributed Storage of IoT Data from Constrained Sensors
+              <a href="https://arxiv.org/pdf/2103.04028.pdf" target="_blank" rel="noopener noreferrer">paper</a>
+              (<a href="https://conferences.computer.org/iotDI/2021/index.html" target="_blank" rel="noopener noreferrer">IoTDI 2021</a>)
+            </li>
+            <li>
+              Reactive Key-Loss Protection in Blockchains
+              <a href="https://eprint.iacr.org/2021/289.pdf" target="_blank" rel="noopener noreferrer">paper</a>
+              (<a href="https://ifca.ai/fc21/wtsc/index.html" target="_blank" rel="noopener noreferrer">WTSC FC21</a>)
+            </li>
+            <li>
+              SoK: Auditability and Accountability in Distributed Payment Systems
+              <a href="https://eprint.iacr.org/2021/239.pdf" target="_blank" rel="noopener noreferrer">paper</a>
+              (<a href="https://sulab-sever.u-aizu.ac.jp/ACNS2021/index.html" target="_blank" rel="noopener noreferrer">ACNS 2021</a>)
+            </li>
+            <li>
+              MiniLedger: Compact-sized Anonymous and Auditable Distributed Payments
+              <a href="https://eprint.iacr.org/2021/869.pdf" target="_blank" rel="noopener noreferrer">paper</a>
+              (<a href="https://esorics2021.athene-center.de/" target="_blank" rel="noopener noreferrer">ESORICS 2021</a>)
+            </li>
+            <li>
+              Proof of Assets in the Diem Blockchain
+              <a href="https://eprint.iacr.org/2021/598.pdf" target="_blank" rel="noopener noreferrer">paper</a>
+              (<a href="https://aiblock.compute.dtu.dk/2021/" target="_blank" rel="noopener noreferrer">AIBlock 2021</a>)
+            </li>
+            <li>
+              Homomorphic decryption in blockchains via compressed discrete-log lookup tables
+              <a href="https://eprint.iacr.org/2021/899.pdf" target="_blank" rel="noopener noreferrer">paper</a>
+              (<a href="https://deic-web.uab.cat/conferences/dpm/cbt2021/" target="_blank" rel="noopener noreferrer">CBT 2021</a>)
+            </li>
+            <li>
+              SoK: Blockchain Light Clients
+              <a href="https://eprint.iacr.org/2021/1657.pdf" target="_blank" rel="noopener noreferrer">paper</a>
+              (<a href="https://fc22.ifca.ai/" target="_blank" rel="noopener noreferrer">FC 2022</a>)
+            </li>
+            <li>
+              Broken Proofs of Solvency in Blockchain Custodial Wallets and Exchanges
+              <a href="https://eprint.iacr.org/2022/043.pdf" target="_blank" rel="noopener noreferrer">paper</a>
+              (<a href="https://fc22.ifca.ai/" target="_blank" rel="noopener noreferrer">FC Workshops 2022</a>)
+            </li>
+            <li>
+              Unlinkability and Interoperability in Account-Based Universal Payment Channels
+              <a href="https://doi.org/10.1007/978-3-031-48806-1_24" target="_blank" rel="noopener noreferrer">paper</a>
+              (FC 2023 Workshops)
+            </li>
+            <li>
+              Privacy-Enhancing Technologies for Financial Data Sharing
+              <a href="https://doi.org/10.48550/arXiv.2306.10200" target="_blank" rel="noopener noreferrer">paper</a>
+            </li>
+            <li>
+              Privacy-Preserving Financial Anomaly Detection via Federated Learning &amp; Multi-Party Computation
+              <a href="https://doi.org/10.48550/arXiv.2310.04546" target="_blank" rel="noopener noreferrer">paper</a>
+              (Special Recognition Prize in
+              <a href="https://www.drivendata.org/competitions/98/nist-federated-learning-1/page/524/" target="_blank" rel="noopener noreferrer">PETs Challenge 2022</a>)
+            </li>
+            <li>
+              Unlinkability and Interoperability in Account-Based Universal Payment Channels
+              <a href="https://eprint.iacr.org/2023/916" target="_blank" rel="noopener noreferrer">paper</a>
+            </li>
+            <li>
+              Scalable Off-Chain Auctions
+              <a href="https://eprint.iacr.org/2023/1454" target="_blank" rel="noopener noreferrer">paper</a>
+            </li>
+            <li>
+              SoK: Web3 Recovery Mechanisms
+              <a href="https://eprint.iacr.org/2023/1575" target="_blank" rel="noopener noreferrer">paper</a>
+            </li>
+            <li>
+              Truncator: Time-space Tradeoff of Cryptographic Primitives
+              <a href="https://eprint.iacr.org/2022/1581" target="_blank" rel="noopener noreferrer">paper</a>
+              (<a href="https://fc24.ifca.ai/" target="_blank" rel="noopener noreferrer">FC 2024</a>)
+            </li>
+            <li>
+              A Plug-and-Play Long-Range Defense System for Proof-of-Stake Blockchains
+              <a href="https://eprint.iacr.org/2024/684" target="_blank" rel="noopener noreferrer">paper</a>
+              (<a href="https://esorics2024.org/" target="_blank" rel="noopener noreferrer">ESORICS 2024</a>)
+            </li>
+            <li>
+              SoK: Fully-homomorphic Encryption in Smart Contracts
+              <a href="https://eprint.iacr.org/2025/527" target="_blank" rel="noopener noreferrer">paper</a>
+            </li>
+            <li>
+              DTL: Data Tumbling Layer - A Composable Unlinkability for Smart Contracts
+              <a href="https://arxiv.org/pdf/2503.04260" target="_blank" rel="noopener noreferrer">paper</a>
+            </li>
+            <li>
+              Lite-PoT: Practical Powers-of-Tau Setup Ceremony
+              <a href="https://arxiv.org/pdf/2503.04549" target="_blank" rel="noopener noreferrer">paper</a>
+            </li>
+            <li>
+              A Composability Analysis Framework for Web3 Wallet Recovery Mechanisms
+              (to appear in
+              <a href="https://sp2025.ieee-security.org/" target="_blank" rel="noopener noreferrer">IEEE S&amp;P 2025</a>)
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="links">
+      <div class="container">
+        <div class="section-card">
+          <h2>Links</h2>
+          <ul class="links-list">
+            <li>
+              <strong>CV</strong><br>
+              <span class="muted">Place your PDF in the repo as <code>cv.pdf</code>.</span>
+            </li>
+            <li>
+              <strong>Mining Pool Project</strong><br>
+              <a href="http://smart-miner.cs.gmu.edu/" target="_blank" rel="noopener noreferrer">Diversification on mining pools</a>
+            </li>
+            <li>
+              <strong>GitHub</strong><br>
+              <a href="https://github.com/PanosChtz/" target="_blank" rel="noopener noreferrer">github.com/PanosChtz</a>
+            </li>
+            <li>
+              <strong>LinkedIn</strong><br>
+              <a href="https://www.linkedin.com/in/panos-chatzigiannis/" target="_blank" rel="noopener noreferrer">panos-chatzigiannis</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Panagiotis Chatzigiannis
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
